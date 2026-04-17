@@ -1,0 +1,35 @@
+﻿{
+  "asteroid": {
+    "type": "Asteroid",
+    "speed": 40.0,
+    "radius": 1.8,
+    "reward": 50,
+    "fragmentCount": 2,
+    "fragmentSpeedMultiplier": 1.8
+  },
+
+  "fragment": {
+    "type": "Fragment",
+    "speed": 70.0,
+    "radius": 0.8,
+    "reward": 20,
+    "fragmentCount": 3,
+    "fragmentSpeedMultiplier": 1.8
+  },
+  
+  "small_fragment": {
+    "type": "SmallFragment",
+    "speed": 70.0,
+    "radius": 0.8,
+    "reward": 20
+  },
+
+  "saucer": {
+    "type": "Saucer",
+    "speed": 60.0,
+    "radius": 1.0,
+    "reward": 100,
+    "chaseAcceleration": 4.0,
+    "maxChaseSpeed": 90.0
+  }
+}

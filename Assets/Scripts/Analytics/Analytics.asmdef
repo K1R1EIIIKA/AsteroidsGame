@@ -1,0 +1,4 @@
+﻿{
+  "name": "Analytics",
+  "references":[ "GUID:79ffc4bb5227748499e26942e31300ed", "GUID:b009399f7257caa4e9d4f303f0ad8e53", "GUID:68989a5d4930dd6418019a8429beeedc", "GUID:0d8beb7f090555447a6cf5ce9e54dbb4", "GUID:3db15dc2109e4d4418e33ba6f6e9b106" ]
+}

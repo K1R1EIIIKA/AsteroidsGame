@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "40369563428",
+    "project_id": "asteroids-demo",
+    "storage_bucket": "asteroids-demo.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:40369563428:android:34580d6048c295475f75b1",
+        "android_client_info": {
+          "package_name": "com.KIRIEIIIKA.AsteroidsGame"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDK4BNa9XNtfxZU3Z7HiOzL7B0FB-YXuGs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
