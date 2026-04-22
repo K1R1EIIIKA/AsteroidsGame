@@ -5,10 +5,10 @@ namespace Infrastructure.Data.Configs
     [Serializable]
     public class SaucerConfig
     {
-        public float speed;
-        public float radius;
-        public int reward;
-        public float chaseAcceleration;
-        public float maxChaseSpeed;
+        public float Speed;
+        public float Radius;
+        public int Reward;
+        public float ChaseAcceleration;
+        public float MaxChaseSpeed;
     }
 }

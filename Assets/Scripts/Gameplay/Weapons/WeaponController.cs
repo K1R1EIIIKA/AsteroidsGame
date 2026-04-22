@@ -42,7 +42,7 @@ namespace Gameplay.Weapons
             bullet.Activate(spawnPosition, angle);
             view.Initialize(bullet, _physicsWorld); 
 
-            _fireTimer = 1f / _config.Ship.bullet.fireRate;
+            _fireTimer = 1f / _config.Ship.Bullet.FireRate;
         }
 
         public void ShootLaser(Vector2 position, float angle)
@@ -59,7 +59,12 @@ namespace Gameplay.Weapons
         
         public void ResetBullets()
         {
-            _bulletPool.TickAll(float.MaxValue); 
+            _bulletPool.ReturnAll(); 
+        }
+        
+        public void ResetLaser()
+        {
+            _laser.Reset();
         }
     }
 }

@@ -5,8 +5,8 @@ namespace Infrastructure.Data.Configs
     [Serializable]
     public class SmallFragmentConfig
     {
-        public float speed;
-        public float radius;
-        public int reward;
+        public float Speed;
+        public float Radius;
+        public int Reward;
     }
 }

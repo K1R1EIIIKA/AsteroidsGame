@@ -24,7 +24,6 @@ namespace Analytics.Advertising
         private Action _onRewardedCallback;
 #endif
 
-        private bool _isInitialized;
 
         private readonly IAnalytics _analytics;
 
@@ -36,7 +35,6 @@ namespace Analytics.Advertising
         public void Initialize()
         {
 #if YANDEX_ADS_ENABLED
-            _isInitialized = true;
             Debug.Log("[YandexAds] Initialized");
 
             MobileAds.SetUserConsent(true);

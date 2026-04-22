@@ -10,7 +10,6 @@ namespace Gameplay.States
         private readonly LazyInject<IStateSwitcher> _stateSwitcher;
         private readonly LazyInject<IUIManager> _uiManager;
         private readonly LazyInject<GameLoopState> _gameLoopState;
-        private readonly IScoreService _scoreService;
         private readonly IAdvertising _advertising;
         private readonly SignalBus _signalBus;
         
@@ -19,14 +18,12 @@ namespace Gameplay.States
         public GameOverState(
             LazyInject<IStateSwitcher> stateSwitcher,
             LazyInject<IUIManager> uiManager,
-            IScoreService scoreService,
             LazyInject<GameLoopState> gameLoopState,
             IAdvertising advertising,
             SignalBus signalBus)
         {
             _stateSwitcher = stateSwitcher;
             _uiManager = uiManager;
-            _scoreService = scoreService;
             _gameLoopState = gameLoopState;
             _advertising = advertising;
             _signalBus = signalBus;

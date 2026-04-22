@@ -18,12 +18,11 @@ namespace Gameplay.States
         private readonly IInputHandler _input;
         private readonly IShip _ship;
         private readonly IEnemySpawner _spawner;
-        private readonly EnemySpawner _enemySpawner;
+        private readonly EnemyPool _enemyPool;
         private readonly PhysicsWorld _physicsWorld;
         private readonly IScoreService _scoreService;
         private readonly SignalBus _signalBus;
         private readonly LazyInject<IUIManager> _uiManager;
-        private readonly BulletCollisionHandler _bulletCollisionHandler;
         private readonly LazyInject<Laser> _laser;
         private readonly InputSwitcher _inputSwitcher;
 
@@ -36,13 +35,12 @@ namespace Gameplay.States
             IShip ship,
             InputSwitcher inputSwitcher,
             IEnemySpawner spawner,
-            EnemySpawner enemySpawner,
+            EnemyPool enemyPool,
             PhysicsWorld physicsWorld,
             IScoreService scoreService,
             SignalBus signalBus,
             LazyInject<IUIManager> uiManager,
-            LazyInject<Laser> laser,
-            BulletCollisionHandler bulletCollisionHandler)
+            LazyInject<Laser> laser)
         {
             _stateSwitcher = stateSwitcher;
             _shipView = shipView;
@@ -50,13 +48,12 @@ namespace Gameplay.States
             _ship = ship;
             _spawner = spawner;
             _inputSwitcher = inputSwitcher;
-            _enemySpawner = enemySpawner;
+            _enemyPool = enemyPool;
             _physicsWorld = physicsWorld;
             _scoreService = scoreService;
             _signalBus = signalBus;
             _uiManager = uiManager;
             _laser = laser;
-            _bulletCollisionHandler = bulletCollisionHandler;
         }
 
         public void Enter()
@@ -69,13 +66,12 @@ namespace Gameplay.States
                 _isFirstEnter = false;
             }
 
-            _ship.ResetBullets();
+            _ship.ResetWeapons();
             _spawner.Start();
             _uiManager.Value.ShowHud();
 
             _signalBus.Subscribe<PlayerDiedSignal>(OnPlayerDied);
             _signalBus.Subscribe<GamePausedSignal>(OnPaused);
-            _signalBus.Subscribe<EnemyDestroyedSignal>(OnEnemyDestroyed);
             _signalBus.Fire(new GameStateChangedSignal { NewState = GameStateType.GameLoop });
         }
 
@@ -113,8 +109,7 @@ namespace Gameplay.States
 
             _ship.Tick(Time.deltaTime);
             _spawner.Tick(Time.deltaTime);
-            _bulletCollisionHandler.Tick();
-            _physicsWorld.CheckLaserCollisions(_laser.Value, _enemySpawner.Pool);
+            _physicsWorld.CheckLaserCollisions(_laser.Value, _enemyPool);
             _physicsWorld.Tick(Time.deltaTime);
         }
 
@@ -124,7 +119,6 @@ namespace Gameplay.States
             _uiManager.Value.HideHud();
 
             _signalBus.Unsubscribe<PlayerDiedSignal>(OnPlayerDied);
-            _signalBus.Unsubscribe<EnemyDestroyedSignal>(OnEnemyDestroyed);
             _signalBus.Unsubscribe<GamePausedSignal>(OnPaused);
         }
 
@@ -136,11 +130,6 @@ namespace Gameplay.States
         private void OnPlayerDied() =>
             _stateSwitcher.Value.Enter<GameOverState>();
 
-        private void OnEnemyDestroyed(EnemyDestroyedSignal signal)
-        {
-            _scoreService.Add(signal.Reward);
-            _signalBus.Fire(new ScoreChangedSignal { NewScore = _scoreService.Score });
-        }
 
         public void ContinueAfterAd()
         {

@@ -28,7 +28,7 @@ namespace Gameplay.PlayerLogic
         public void SetPosition(Vector2 pos) => _ship.SetPosition(pos);
         public void Reset() => _ship.Reset();
         public void SetHealth(int health) => _ship.SetHealth(health);
-        public void ResetBullets() => _ship.ResetBullets();
+        public void ResetWeapons() => _ship.ResetWeapons();
         public void SetPhysicsBody(PhysicsBody body) => _ship.SetPhysicsBody(body);
     }
 }

@@ -1,10 +1,7 @@
-﻿using Core.Configs;
-using Core.Interfaces;
+﻿using Core.Interfaces;
 using Cysharp.Threading.Tasks;
 using Gameplay.Enemies.Systems;
 using Gameplay.Weapons;
-using Infrastructure.Data;
-using Infrastructure.Data.Configs;
 using Infrastructure.Services;
 using UnityEngine;
 using Zenject;

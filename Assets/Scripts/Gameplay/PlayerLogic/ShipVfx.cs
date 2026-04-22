@@ -23,7 +23,7 @@ namespace Gameplay.PlayerLogic
         public void Construct(SignalBus signalBus, ConfigService config)
         {
             _signalBus = signalBus;
-            _invincibilityDuration = config.Ship.invincibilityDuration;
+            _invincibilityDuration = config.Ship.InvincibilityDuration;
         }
 
         private void OnEnable()

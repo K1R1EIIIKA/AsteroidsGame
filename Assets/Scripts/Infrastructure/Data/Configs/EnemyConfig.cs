@@ -5,9 +5,9 @@ namespace Infrastructure.Data.Configs
     [Serializable]
     public class EnemyConfig
     {
-        public AsteroidConfig asteroid;
-        public FragmentConfig fragment;
-        public SmallFragmentConfig small_fragment;
-        public SaucerConfig saucer;
+        public AsteroidConfig Asteroid;
+        public FragmentConfig Fragment;
+        public SmallFragmentConfig SmallFragment;
+        public SaucerConfig Saucer;
     }
 }

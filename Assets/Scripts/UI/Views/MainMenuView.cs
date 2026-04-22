@@ -1,5 +1,4 @@
-﻿using Core.Signals;
-using UI.ViewModels;
+﻿using UI.ViewModels;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;

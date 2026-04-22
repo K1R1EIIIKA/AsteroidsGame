@@ -52,8 +52,6 @@ namespace App
             Container.DeclareSignal<GameStartedSignal>();
             Container.DeclareSignal<GamePausedSignal>();
             Container.DeclareSignal<GameResumedSignal>();
-            Container.DeclareSignal<PlayerRespawnedSignal>();
-            Container.DeclareSignal<EnemySpawnedSignal>();
             Container.DeclareSignal<PlayerInvincibilityEndedSignal>();
             Container.DeclareSignal<RewardedAdCompletedSignal>();
             Container.DeclareSignal<WatchAdRequestedSignal>();
@@ -65,10 +63,9 @@ namespace App
             var enemyConfig = JsonConfigLoader.Load<EnemyConfig>("enemy_config");
             var worldConfig = JsonConfigLoader.Load<WorldConfig>("world_config");
 
-            var configService = new ConfigService();
-            configService.Initialize(shipConfig, enemyConfig, worldConfig);
-
-            Container.Bind<ConfigService>().FromInstance(configService).AsSingle();
+            Container.Bind<ConfigService>()
+                .FromMethod(_ => new ConfigService(shipConfig, enemyConfig, worldConfig))
+                .AsSingle();
 
             Container.Bind<GameConfig>().FromInstance(_gameConfig).AsSingle();
             
@@ -83,7 +80,6 @@ namespace App
             Container.Bind<PhysicsWorld>().AsSingle();
 
             Container.BindInterfacesAndSelfTo<ShipCollisionHandler>().AsSingle();
-            Container.BindInterfacesAndSelfTo<BulletCollisionHandler>().AsSingle();
         }
 
         private void InstallServices()

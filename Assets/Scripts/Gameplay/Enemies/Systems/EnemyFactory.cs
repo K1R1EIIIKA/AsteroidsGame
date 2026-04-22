@@ -31,31 +31,26 @@ namespace Gameplay.Enemies.Systems
 
         private Asteroid CreateAsteroid()
         {
-            var strategy = new RandomMovementStrategy();
-            return _container.Instantiate<Asteroid>(
-                new object[] { _config.Enemy.asteroid, strategy });
+            var strategy = _container.Instantiate<RandomMovementStrategy>();
+            return _container.Instantiate<Asteroid>(new object[] { _config.Enemy.Asteroid, strategy });
         }
 
         private Fragment CreateFragment()
         {
-            var strategy = new RandomMovementStrategy();
-            return _container.Instantiate<Fragment>(
-                new object[] { _config.Enemy.fragment, strategy });
+            var strategy = _container.Instantiate<RandomMovementStrategy>();
+            return _container.Instantiate<Fragment>(new object[] { _config.Enemy.Fragment, strategy });
         }
 
         private SmallFragment CreateSmallFragment()
         {
-            var strategy = new RandomMovementStrategy();
-            return _container.Instantiate<SmallFragment>(
-                new object[] { _config.Enemy.small_fragment, strategy });
+            var strategy = _container.Instantiate<RandomMovementStrategy>();
+            return _container.Instantiate<SmallFragment>(new object[] { _config.Enemy.SmallFragment, strategy });
         }
 
         private Saucer CreateSaucer()
         {
-            var ship = _container.Resolve<IShip>();
-            var strategy = new ChaseMovementStrategy(ship, _config.Enemy.saucer);
-            return _container.Instantiate<Saucer>(
-                new object[] { _config, strategy });
+            var strategy = _container.Instantiate<ChaseMovementStrategy>(new object[] { _config.Enemy.Saucer });
+            return _container.Instantiate<Saucer>(new object[] { _config, strategy });
         }
     }
 }

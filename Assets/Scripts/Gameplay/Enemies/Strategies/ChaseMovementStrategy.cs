@@ -18,7 +18,7 @@ namespace Gameplay.Enemies.Strategies
         public Vector2 CalculateVelocity(Vector2 currentVelocity, Vector2 position, float delta)
         {
             var direction = (_ship.Position - position).normalized;
-            var targetVelocity = direction * _config.maxChaseSpeed;
+            var targetVelocity = direction * _config.MaxChaseSpeed;
 
             var turnSpeed = 5f; 
             var velocity = Vector2.Lerp(currentVelocity, targetVelocity, turnSpeed * delta);

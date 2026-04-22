@@ -31,7 +31,7 @@ namespace Gameplay.Weapons
         public (Bullet bullet, BulletView view) Get()
         {
             var view   = _pool.Get();
-            var bullet = new Bullet(_config.Ship.bullet, _physicsWorld);
+            var bullet = new Bullet(_config.Ship.Bullet, _physicsWorld);
             _active.Add((bullet, view));
             return (bullet, view);
         }
@@ -49,6 +49,14 @@ namespace Gameplay.Weapons
                     _active.RemoveAt(i);
                 }
             }
+        }
+        public void ReturnAll()
+        {
+            foreach (var (_, view) in _active)
+            {
+                _pool.Return(view);
+            }
+            _active.Clear();
         }
     }
 }

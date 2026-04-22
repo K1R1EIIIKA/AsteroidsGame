@@ -6,7 +6,6 @@ using Core.Interfaces;
 using Core.Signals;
 using Cysharp.Threading.Tasks;
 using Infrastructure.Data;
-using Infrastructure.Data.Configs;
 using Infrastructure.Physics;
 using UnityEngine;
 using Zenject;
@@ -50,13 +49,13 @@ namespace Gameplay.Enemies.Systems
             _signalBus.Subscribe<EnemyDestroyedSignal>(OnEnemyDestroyed);
 
             SpawnLoopAsync(EnemyType.Asteroid,
-                _config.World.asteroidSpawnInterval,
-                _config.World.maxAsteroids,
+                _config.World.AsteroidSpawnInterval,
+                _config.World.MaxAsteroids,
                 _cts.Token).Forget();
 
             SpawnLoopAsync(EnemyType.Saucer,
-                _config.World.saucerSpawnInterval,
-                _config.World.maxSaucers,
+                _config.World.SaucerSpawnInterval,
+                _config.World.MaxSaucers,
                 _cts.Token).Forget();
         }
 
@@ -104,7 +103,7 @@ namespace Gameplay.Enemies.Systems
 
                 if (token.IsCancellationRequested) break;
 
-                if (_pool.Active.Count >= _config.World.maxEnemiesOnMap) continue;
+                if (_pool.Active.Count >= _config.World.MaxEnemiesOnMap) continue;
                 if (CountByType(type) >= max) continue;
 
                 SpawnEnemy(type);
@@ -143,7 +142,7 @@ namespace Gameplay.Enemies.Systems
 
         private void OnEnemyDestroyed(EnemyDestroyedSignal signal)
         {
-            var entry = FindActive(signal.Position);
+            var entry = FindActive(signal.EnemyOwner);
             if (!entry.HasValue) return;
 
             var (logic, view) = entry.Value;
@@ -213,8 +212,8 @@ namespace Gameplay.Enemies.Systems
 
         private Vector2 GetSpawnPosition()
         {
-            var hw = _config.World.worldWidth * 0.5f + _config.World.spawnMargin;
-            var hh = _config.World.worldHeight * 0.5f + _config.World.spawnMargin;
+            var hw = _config.World.WorldWidth * 0.5f + _config.World.SpawnMargin;
+            var hh = _config.World.WorldHeight * 0.5f + _config.World.SpawnMargin;
 
             return Random.Range(0, 4) switch
                 {
@@ -232,9 +231,9 @@ namespace Gameplay.Enemies.Systems
 
             var speed = type switch
                 {
-                    EnemyType.Asteroid => _config.Enemy.asteroid.speed,
-                    EnemyType.Saucer => _config.Enemy.saucer.speed,
-                    _ => _config.Enemy.asteroid.speed
+                    EnemyType.Asteroid => _config.Enemy.Asteroid.Speed,
+                    EnemyType.Saucer => _config.Enemy.Saucer.Speed,
+                    _ => _config.Enemy.Asteroid.Speed
                 };
 
             return direction * speed;
@@ -249,11 +248,11 @@ namespace Gameplay.Enemies.Systems
             return count;
         }
 
-        private (IEnemy logic, EnemyView view)? FindActive(Vector2 position)
+        private (IEnemy logic, EnemyView view)? FindActive(IEnemy body)
         {
-            foreach (var entry in _pool.Active)
-                if (Vector2.Distance(entry.logic.Position, position) < 0.1f)
-                    return entry;
+            foreach (var (logic, view) in _pool.Active)
+                if (logic == body)
+                    return (logic, view);
             return null;
         }
 

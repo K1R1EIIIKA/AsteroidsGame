@@ -1,6 +1,4 @@
-﻿using Core.Configs;
-using Infrastructure.Data;
-using Infrastructure.Data.Configs;
+﻿using Infrastructure.Data;
 using UnityEngine;
 
 namespace Infrastructure.Physics
@@ -16,8 +14,8 @@ namespace Infrastructure.Physics
 
         public Vector2 Wrap(Vector2 position)
         {
-            var hw = _config.World.worldWidth  * 0.5f;
-            var hh = _config.World.worldHeight * 0.5f;
+            var hw = _config.World.WorldWidth  * 0.5f;
+            var hh = _config.World.WorldHeight * 0.5f;
 
             if (position.x >  hw) position.x = -hw;
             if (position.x < -hw) position.x =  hw;

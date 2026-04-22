@@ -19,7 +19,7 @@ namespace Gameplay.Enemies
         public EnemyType Type => EnemyType.SmallFragment;
         public Vector2 Position => _position;
         public Vector2 Velocity => _velocity;
-        public float Radius => _config.radius;
+        public float Radius => _config.Radius;
         public bool IsActive { get; private set; }
 
         public SmallFragment(SmallFragmentConfig config, SignalBus signalBus, IMovementStrategy movement)
@@ -51,10 +51,11 @@ namespace Gameplay.Enemies
             _signalBus.Fire(new EnemyDestroyedSignal
                 {
                     EnemyType = Type,
-                    Reward = _config.reward,
+                    Reward = _config.Reward,
                     Position = _position,
                     Velocity = _velocity,
-                    FragmentCount = 0
+                    FragmentCount = 0,
+                    EnemyOwner = this
                 });
         }
 

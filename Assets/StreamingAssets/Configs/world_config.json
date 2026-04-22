@@ -1,10 +1,10 @@
 ﻿{
-  "worldWidth": 1800.0,
-  "worldHeight": 980.0,
-  "spawnMargin": 60.0,
-  "maxEnemiesOnMap": 20,
-  "asteroidSpawnInterval": 4.0,
-  "saucerSpawnInterval": 8.0,
-  "maxAsteroids": 14,
-  "maxSaucers": 3
+  "WorldWidth": 1800.0,
+  "WorldHeight": 980.0,
+  "SpawnMargin": 60.0,
+  "MaxEnemiesOnMap": 20,
+  "AsteroidSpawnInterval": 4.0,
+  "SaucerSpawnInterval": 8.0,
+  "MaxAsteroids": 14,
+  "MaxSaucers": 3
 }

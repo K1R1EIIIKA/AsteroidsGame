@@ -5,15 +5,15 @@ namespace Infrastructure.Data.Configs
     [Serializable]
     public class ShipConfig
     {
-        public int maxHealth;
-        public float invincibilityDuration;
+        public int MaxHealth;
+        public float InvincibilityDuration;
 
-        public float thrustForce;
-        public float rotationSpeed;
-        public float maxSpeed;
-        public float drag;
+        public float ThrustForce;
+        public float RotationSpeed;
+        public float MaxSpeed;
+        public float Drag;
 
-        public BulletConfig bullet;
-        public LaserConfig laser;
+        public BulletConfig Bullet;
+        public LaserConfig Laser;
     }
 }

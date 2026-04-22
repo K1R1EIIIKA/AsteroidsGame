@@ -11,5 +11,6 @@ namespace Core.Interfaces
         void ShootLaser(Vector2 position, float angle);
         void Tick(float delta);
         void ResetBullets();
+        void ResetLaser();
     }
 }

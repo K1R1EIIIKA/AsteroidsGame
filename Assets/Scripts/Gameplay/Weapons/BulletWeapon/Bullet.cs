@@ -29,8 +29,8 @@ namespace Gameplay.Weapons.BulletWeapon
             _position = position;
             _velocity = new Vector2(
                 Mathf.Sin(angle * Mathf.Deg2Rad),
-                Mathf.Cos(angle * Mathf.Deg2Rad)) * _config.bulletSpeed;
-            _lifetime = _config.bulletLifetime;
+                Mathf.Cos(angle * Mathf.Deg2Rad)) * _config.BulletSpeed;
+            _lifetime = _config.BulletLifetime;
             IsActive = true;
         }
 

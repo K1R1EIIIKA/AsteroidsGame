@@ -139,7 +139,6 @@ namespace Gameplay
 
             foreach (var (enemy, view) in enemyPool.Active)
             {
-
                 if (!enemy.IsActive) continue;
                 if (view.PhysicsBody == null) continue;
 

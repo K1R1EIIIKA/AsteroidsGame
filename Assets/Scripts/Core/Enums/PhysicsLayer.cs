@@ -5,6 +5,5 @@
         Ship,
         Enemy,
         Bullet,
-        Laser
     }   
 }

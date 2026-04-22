@@ -34,7 +34,7 @@ namespace Gameplay.PlayerLogic
             if (signal.EnemyOwner is Saucer saucer)
             {
                 var bounceDirection = (signal.EnemyVelocity).normalized * -1f;
-                var bounceVelocity  = bounceDirection * saucer.Config.Enemy.saucer.maxChaseSpeed * 2f;
+                var bounceVelocity  = bounceDirection * saucer.Config.Enemy.Saucer.MaxChaseSpeed * 2f;
                 saucer.ApplyBounce(bounceVelocity);
             }
         }

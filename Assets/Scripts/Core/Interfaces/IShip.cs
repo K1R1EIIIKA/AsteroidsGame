@@ -23,6 +23,6 @@ namespace Core.Interfaces
         void SetPosition(Vector2 position);
         void Reset();
         void SetHealth(int health);
-        void ResetBullets();
+        void ResetWeapons();
     }
 }

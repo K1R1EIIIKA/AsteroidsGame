@@ -8,7 +8,7 @@ namespace Infrastructure.Data
         public EnemyConfig Enemy { get; private set; }
         public WorldConfig World { get; private set; }
 
-        public void Initialize(ShipConfig ship, EnemyConfig enemy, WorldConfig world)
+        public ConfigService(ShipConfig ship, EnemyConfig enemy, WorldConfig world)
         {
             Ship = ship;
             Enemy = enemy;

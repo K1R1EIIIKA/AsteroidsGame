@@ -1,35 +1,32 @@
 ﻿{
-  "asteroid": {
-    "type": "Asteroid",
-    "speed": 40.0,
-    "radius": 1.8,
-    "reward": 50,
-    "fragmentCount": 2,
-    "fragmentSpeedMultiplier": 1.8
+  "Asteroid": {
+    "Type": "Asteroid",
+    "Speed": 40.0,
+    "Radius": 1.8,
+    "Reward": 50,
+    "FragmentCount": 2,
+    "FragmentSpeedMultiplier": 1.8
   },
-
-  "fragment": {
-    "type": "Fragment",
-    "speed": 70.0,
-    "radius": 0.8,
-    "reward": 20,
-    "fragmentCount": 3,
-    "fragmentSpeedMultiplier": 1.8
+  "Fragment": {
+    "Type": "Fragment",
+    "Speed": 70.0,
+    "Radius": 0.8,
+    "Reward": 20,
+    "FragmentCount": 3,
+    "FragmentSpeedMultiplier": 1.8
   },
-  
-  "small_fragment": {
-    "type": "SmallFragment",
-    "speed": 70.0,
-    "radius": 0.8,
-    "reward": 20
+  "SmallFragment": {
+    "Type": "SmallFragment",
+    "Speed": 70.0,
+    "Radius": 0.8,
+    "Reward": 20
   },
-
-  "saucer": {
-    "type": "Saucer",
-    "speed": 60.0,
-    "radius": 1.0,
-    "reward": 100,
-    "chaseAcceleration": 4.0,
-    "maxChaseSpeed": 90.0
+  "Saucer": {
+    "Type": "Saucer",
+    "Speed": 60.0,
+    "Radius": 1.0,
+    "Reward": 100,
+    "ChaseAcceleration": 4.0,
+    "MaxChaseSpeed": 90.0
   }
 }

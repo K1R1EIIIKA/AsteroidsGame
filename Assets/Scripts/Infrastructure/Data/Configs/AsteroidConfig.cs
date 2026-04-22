@@ -5,10 +5,10 @@ namespace Infrastructure.Data.Configs
     [Serializable]
     public class AsteroidConfig
     {
-        public float speed;
-        public float radius;
-        public int reward;
-        public int fragmentCount;
-        public float fragmentSpeedMultiplier;
+        public float Speed;
+        public float Radius;
+        public int Reward;
+        public int FragmentCount;
+        public float FragmentSpeedMultiplier;
     }
 }

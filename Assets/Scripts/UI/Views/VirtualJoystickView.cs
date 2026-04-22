@@ -11,7 +11,6 @@ namespace UI.Views
         [SerializeField] private RectTransform _handle;
 
         private VirtualJoystickInput _joystickInput;
-        private Vector2 _center;
         private float _radius;
 
         [Inject]

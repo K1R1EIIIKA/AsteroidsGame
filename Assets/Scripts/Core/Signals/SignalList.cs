@@ -1,4 +1,5 @@
 ﻿using Core.Enums;
+using Core.Interfaces;
 using UnityEngine;
 
 namespace Core.Signals
@@ -8,6 +9,7 @@ namespace Core.Signals
         public EnemyType EnemyType;
         public int Reward;
         public Vector2 Position;
+        public IEnemy EnemyOwner;
         public Vector2 Velocity;
         public int FragmentCount;
         public float FragmentSpeedMultiplier;
@@ -40,17 +42,6 @@ namespace Core.Signals
     public struct GamePausedSignal { }
 
     public struct GameResumedSignal { }
-
-    public struct PlayerRespawnedSignal
-    {
-        public Vector2 Position;
-    }
-
-    public struct EnemySpawnedSignal
-    {
-        public EnemyType EnemyType;
-        public Vector2 Position;
-    }
     
     public struct ShipCollisionSignal
     {

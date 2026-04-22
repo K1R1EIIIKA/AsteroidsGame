@@ -15,9 +15,9 @@ namespace Gameplay.Weapons.LaserWeapon
         private int _charges;
 
         public int Charges => _charges;
-        public float Length => _config.Ship.laser.laserLength;
-        public float Radius => _config.Ship.laser.laserRadius;
-        public float RechargeProgress => 1f - (_rechargeTimer / _config.Ship.laser.rechargeTime);
+        public float Length => _config.Ship.Laser.LaserLength;
+        public float Radius => _config.Ship.Laser.LaserRadius;
+        public float RechargeProgress => 1f - (_rechargeTimer / _config.Ship.Laser.RechargeTime);
         public bool IsActive { get; private set; }
         public Vector2 Origin { get; private set; }
         public float Angle { get; private set; }
@@ -26,7 +26,7 @@ namespace Gameplay.Weapons.LaserWeapon
         {
             _config = config;
             _signalBus = signalBus;
-            _charges = config.Ship.laser.maxCharges;
+            _charges = config.Ship.Laser.MaxCharges;
         }   
 
         public bool TryFire(Vector2 position, float angle)
@@ -36,11 +36,11 @@ namespace Gameplay.Weapons.LaserWeapon
             Origin = position;
             Angle = angle;
             IsActive = true;
-            _duration = _config.Ship.laser.laserDuration;
+            _duration = _config.Ship.Laser.LaserDuration;
             _charges--;
             
             if (_rechargeTimer <= 0f)
-                _rechargeTimer = _config.Ship.laser.rechargeTime;
+                _rechargeTimer = _config.Ship.Laser.RechargeTime;
             
             _signalBus.Fire(new LaserFiredSignal { ChargesRemaining = _charges });
             return true;
@@ -55,14 +55,14 @@ namespace Gameplay.Weapons.LaserWeapon
                     IsActive = false;
             }
 
-            if (_charges < _config.Ship.laser.maxCharges)
+            if (_charges < _config.Ship.Laser.MaxCharges)
             {
                 _rechargeTimer -= delta;
                 if (_rechargeTimer <= 0f)
                 {
                     _charges++;
-                    _rechargeTimer = _charges < _config.Ship.laser.maxCharges
-                        ? _config.Ship.laser.rechargeTime
+                    _rechargeTimer = _charges < _config.Ship.Laser.MaxCharges
+                        ? _config.Ship.Laser.RechargeTime
                         : 0f;
                 }
             }
@@ -70,7 +70,7 @@ namespace Gameplay.Weapons.LaserWeapon
 
         public void Reset()
         {
-            _charges = _config.Ship.laser.maxCharges;
+            _charges = _config.Ship.Laser.MaxCharges;
             _rechargeTimer = 0f;
             IsActive = false;
         }

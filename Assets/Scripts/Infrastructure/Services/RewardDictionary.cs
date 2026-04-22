@@ -18,16 +18,16 @@ namespace Infrastructure.Services
         {
             _rewards = new Dictionary<EnemyType, int>
                 {
-                    [EnemyType.Asteroid] = _config.Enemy.asteroid.reward,
-                    [EnemyType.Fragment] = _config.Enemy.fragment.reward,
-                    [EnemyType.SmallFragment] = _config.Enemy.small_fragment.reward,
-                    [EnemyType.Saucer] = _config.Enemy.saucer.reward,
+                    [EnemyType.Asteroid] = _config.Enemy.Asteroid.Reward,
+                    [EnemyType.Fragment] = _config.Enemy.Fragment.Reward,
+                    [EnemyType.SmallFragment] = _config.Enemy.SmallFragment.Reward,
+                    [EnemyType.Saucer] = _config.Enemy.Saucer.Reward,
                 };
         }
 
         public int Get(EnemyType type)
         {
-            return _rewards.TryGetValue(type, out var reward) ? reward : 0;
+            return _rewards.GetValueOrDefault(type, 0);
         }
     }
 }

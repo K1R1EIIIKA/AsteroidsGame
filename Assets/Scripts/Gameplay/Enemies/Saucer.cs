@@ -25,7 +25,7 @@ namespace Gameplay.Enemies
         public EnemyType Type => EnemyType.Saucer;
         public Vector2 Position => _position;
         public Vector2 Velocity => _velocity;
-        public float Radius => _config.Enemy.saucer.radius;
+        public float Radius => _config.Enemy.Saucer.Radius;
         public bool IsActive { get; private set; }
 
         public Saucer(
@@ -71,10 +71,11 @@ namespace Gameplay.Enemies
             _signalBus.Fire(new EnemyDestroyedSignal
                 {
                     EnemyType = Type,
-                    Reward = _config.Enemy.saucer.reward,
+                    Reward = _config.Enemy.Saucer.Reward,
                     Position = _position,
                     Velocity = _velocity,
-                    FragmentCount = 0
+                    FragmentCount = 0,
+                    EnemyOwner = this
                 });
         }
 

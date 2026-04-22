@@ -1,24 +1,21 @@
 ﻿{
-  "maxHealth": 3,
-  "invincibilityDuration": 3.0,
-
-  "thrustForce": 400.0,
-  "rotationSpeed": 180.0,
-  "maxSpeed": 400.0,
-  "drag": 0.98,
-
-  "bullet": {
-    "maxAmmo": 100,
-    "fireRate": 5.0,
-    "bulletSpeed": 450.0,
-    "bulletLifetime": 3.0
+  "MaxHealth": 3,
+  "InvincibilityDuration": 3.0,
+  "ThrustForce": 400.0,
+  "RotationSpeed": 180.0,
+  "MaxSpeed": 400.0,
+  "Drag": 0.98,
+  "Bullet": {
+    "MaxAmmo": 100,
+    "FireRate": 5.0,
+    "BulletSpeed": 450.0,
+    "BulletLifetime": 3.0
   },
-
-  "laser": {
-    "maxCharges": 3,
-    "rechargeTime": 8.0,
-    "laserDuration": 0.3,
-    "laserLength": 5000.0,
-    "laserRadius": 0.2
-  } 
+  "Laser": {
+    "MaxCharges": 3,
+    "RechargeTime": 8.0,
+    "LaserDuration": 0.3,
+    "LaserLength": 5000.0,
+    "LaserRadius": 0.2
+  }
 }

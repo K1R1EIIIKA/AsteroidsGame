@@ -37,7 +37,7 @@ namespace Gameplay.PlayerLogic
             _config = config;
             _signalBus = signalBus;
             _weaponController = weaponController;
-            _health = config.Ship.maxHealth;
+            _health = config.Ship.MaxHealth;
         }
 
         public void SetPhysicsBody(PhysicsBody physicsBody)
@@ -55,16 +55,16 @@ namespace Gameplay.PlayerLogic
                     Mathf.Sin(_angle * Mathf.Deg2Rad),
                     Mathf.Cos(_angle * Mathf.Deg2Rad));
 
-            _velocity += moveDirection * _config.Ship.thrustForce * delta;
+            _velocity += moveDirection * _config.Ship.ThrustForce * delta;
 
-            if (_velocity.magnitude > _config.Ship.maxSpeed)
-                _velocity = _velocity.normalized * _config.Ship.maxSpeed;
+            if (_velocity.magnitude > _config.Ship.MaxSpeed)
+                _velocity = _velocity.normalized * _config.Ship.MaxSpeed;
         }
 
         public void Rotate(float delta)
         {
             if (_isInvincible) return;
-            _angle += _config.Ship.rotationSpeed * delta;
+            _angle += _config.Ship.RotationSpeed * delta;
 
             _angle %= 360f;
             if (_angle < 0f) _angle += 360f;
@@ -74,7 +74,7 @@ namespace Gameplay.PlayerLogic
         {
             if (_isInvincible) return;
 
-            var turnSpeed = _config.Ship.rotationSpeed * 2 * delta;
+            var turnSpeed = _config.Ship.RotationSpeed * 2 * delta;
             _angle = Mathf.MoveTowardsAngle(_angle, targetAngle, turnSpeed);
         }
         
@@ -91,7 +91,7 @@ namespace Gameplay.PlayerLogic
 
         public void Tick(float delta)
         {
-            _velocity *= Mathf.Pow(_config.Ship.drag, delta * 60f);
+            _velocity *= Mathf.Pow(_config.Ship.Drag, delta * 60f);
 
             if (_physicsBody != null)
             {
@@ -140,17 +140,19 @@ namespace Gameplay.PlayerLogic
             _isInvincible = true;
 
             var cancelled = await UniTask.Delay(
-                    (int)(_config.Ship.invincibilityDuration * 1000),
+                    (int)(_config.Ship.InvincibilityDuration * 1000),
                     cancellationToken: _invincibilityCts.Token)
                 .SuppressCancellationThrow();
             
+            if(cancelled) return;
+           
             _signalBus.Fire(new PlayerInvincibilityEndedSignal());
             _isInvincible = false;
         }
 
         public void Reset()
         {
-            _health = _config.Ship.maxHealth;
+            _health = _config.Ship.MaxHealth;
             _velocity = Vector2.zero;
             _angle = 0f;
             _isInvincible = false;
@@ -165,7 +167,7 @@ namespace Gameplay.PlayerLogic
         
         public void SetHealth(int health)
         {
-            _health = Mathf.Clamp(health, 0, _config.Ship.maxHealth);
+            _health = Mathf.Clamp(health, 0, _config.Ship.MaxHealth);
             _signalBus.Fire(new PlayerDamagedSignal { HealthRemaining = _health });
             
             _signalBus.Fire(new PlayerInvincibilityEndedSignal());
@@ -175,9 +177,10 @@ namespace Gameplay.PlayerLogic
             _invincibilityCts = null;
         }
 
-        public void ResetBullets()
+        public void ResetWeapons()
         {
             _weaponController.ResetBullets();
+            _weaponController.ResetLaser();
         }
     }
 }

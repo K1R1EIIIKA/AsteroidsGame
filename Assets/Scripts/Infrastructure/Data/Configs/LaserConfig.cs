@@ -5,9 +5,9 @@ namespace Infrastructure.Data.Configs
     [Serializable]
     public class LaserConfig
     {
-        public int maxCharges;
-        public float rechargeTime;
-        public float laserDuration;
-        public float laserLength;
-        public float laserRadius; }
+        public int MaxCharges;
+        public float RechargeTime;
+        public float LaserDuration;
+        public float LaserLength;
+        public float LaserRadius; }
 }
