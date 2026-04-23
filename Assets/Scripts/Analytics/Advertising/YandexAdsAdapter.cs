@@ -23,8 +23,6 @@ namespace Analytics.Advertising
 
         private Action _onRewardedCallback;
 #endif
-
-
         private readonly IAnalytics _analytics;
 
         public YandexAdsAdapter(IAnalytics analytics)

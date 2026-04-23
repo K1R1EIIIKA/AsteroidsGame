@@ -12,7 +12,6 @@ namespace Gameplay.States
     {
         private readonly LazyInject<IStateSwitcher> _stateSwitcher;
         private readonly IScoreService _scoreService;
-        private readonly PhysicsWorld _physicsWorld;
         private readonly RewardDictionary _rewardDictionary;
         private readonly EnemyPool _enemyPool;
         private readonly BulletPool _bulletPool;
@@ -22,14 +21,12 @@ namespace Gameplay.States
         public BootstrapState(
             LazyInject<IStateSwitcher> stateSwitcher,
             IScoreService scoreService,
-            PhysicsWorld physicsWorld,
             RewardDictionary rewardDictionary,
             EnemyPool enemyPool,
             BulletPool bulletPool)
         {
             _stateSwitcher = stateSwitcher;
             _scoreService = scoreService;
-            _physicsWorld = physicsWorld;
             _rewardDictionary = rewardDictionary;
             _enemyPool = enemyPool;
             _bulletPool = bulletPool;
@@ -43,7 +40,6 @@ namespace Gameplay.States
         private async UniTaskVoid InitializeAsync()
         {
             _rewardDictionary.Initialize();
-            _physicsWorld.Initialize();
             _scoreService.Reset();
 
             await UniTask.Yield();

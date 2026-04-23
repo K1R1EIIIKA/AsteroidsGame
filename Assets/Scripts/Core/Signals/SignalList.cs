@@ -55,4 +55,8 @@ namespace Core.Signals
     public struct RewardedAdCompletedSignal { }
     
     public struct WatchAdRequestedSignal { }
+    
+    public struct ContinueAfterAdSignal { }
+    
+    public struct GameRestartedSignal { }
 }

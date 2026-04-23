@@ -38,7 +38,7 @@ namespace Gameplay.Enemies
             _movement = movement;
         }
 
-        public void Activate(Vector2 position)
+        public void Initialize(Vector2 position)
         {
             _position = position;
             _velocity = Vector2.zero;

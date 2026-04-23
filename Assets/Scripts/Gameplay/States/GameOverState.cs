@@ -59,13 +59,13 @@ namespace Gameplay.States
 
         private void OnRestart()
         {
-            _gameLoopState.Value.ResetGame();
+            _signalBus.Fire(new GameRestartedSignal());
             _stateSwitcher.Value.Enter<GameLoopState>();
         }
         
         private void OnRewardedCompleted(RewardedAdCompletedSignal signal)
         {
-            _gameLoopState.Value.ContinueAfterAd();
+            _signalBus.Fire(new ContinueAfterAdSignal());
             _stateSwitcher.Value.Enter<GameLoopState>();
         }
         

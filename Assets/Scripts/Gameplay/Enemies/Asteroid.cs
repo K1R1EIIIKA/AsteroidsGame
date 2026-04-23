@@ -32,7 +32,7 @@ namespace Gameplay.Enemies
             _movement = movement;
         }
 
-        public void Activate(Vector2 position, Vector2 velocity)
+        public void Initialize(Vector2 position, Vector2 velocity)
         {
             _position = position;
             _velocity = velocity;

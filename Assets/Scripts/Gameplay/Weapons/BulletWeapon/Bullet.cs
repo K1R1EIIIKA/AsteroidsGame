@@ -1,4 +1,5 @@
-﻿using Infrastructure.Data.Configs;
+﻿using Gameplay.Collisions;
+using Infrastructure.Data.Configs;
 using Infrastructure.Physics;
 using UnityEngine;
 
