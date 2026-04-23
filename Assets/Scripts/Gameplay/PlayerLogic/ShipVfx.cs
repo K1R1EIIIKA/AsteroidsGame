@@ -96,7 +96,7 @@ namespace Gameplay.PlayerLogic
                 _spriteRenderer.enabled = true;
         }
 
-        private async UniTaskVoid BlinkAsync(CancellationToken token)
+        private async UniTask BlinkAsync(CancellationToken token)
         {
             var startTime = Time.time;
             var endTime   = startTime + _invincibilityDuration;

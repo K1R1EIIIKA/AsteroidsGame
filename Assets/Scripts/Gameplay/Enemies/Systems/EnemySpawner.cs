@@ -76,7 +76,7 @@ namespace Gameplay.Enemies.Systems
         }
 
 
-        private async UniTaskVoid RunLoopAsync(
+        private async UniTask RunLoopAsync(
             EnemyType type, float interval, int max, CancellationToken token)
         {
             while (!token.IsCancellationRequested)

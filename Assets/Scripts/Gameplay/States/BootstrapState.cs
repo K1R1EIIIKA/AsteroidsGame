@@ -37,7 +37,7 @@ namespace Gameplay.States
             InitializeAsync().Forget();
         }
 
-        private async UniTaskVoid InitializeAsync()
+        private async UniTask InitializeAsync()
         {
             _rewardDictionary.Initialize();
             _scoreService.Reset();

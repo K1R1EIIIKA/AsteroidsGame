@@ -24,8 +24,8 @@ namespace App.Installers
             var worldConfig = JsonConfigLoader.Load<WorldConfig>("world_config");
 
             Container.Bind<ConfigService>()
-                .FromMethod(_ => new ConfigService(shipConfig, enemyConfig, worldConfig))
-                .AsSingle();
+                .AsSingle()
+                .WithArguments(shipConfig, enemyConfig, worldConfig);
 
             Container.Bind<GameConfig>()
                 .FromInstance(_gameConfig)

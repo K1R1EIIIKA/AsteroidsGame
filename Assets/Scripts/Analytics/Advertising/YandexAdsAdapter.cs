@@ -40,7 +40,6 @@ namespace Analytics.Advertising
             LoadInterstitial();
             LoadRewarded();
 #else
-            _isInitialized = true;
             Debug.Log("[YandexAds] Stub initialized");
 #endif
         }

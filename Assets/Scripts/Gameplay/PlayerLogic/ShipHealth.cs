@@ -58,7 +58,7 @@ namespace Gameplay.PlayerLogic
             CancelInvincibility();
         }
 
-        private async UniTaskVoid StartInvincibilityAsync()
+        private async UniTask StartInvincibilityAsync()
         {
             CancelInvincibility();
             _cts = new CancellationTokenSource();
